@@ -17,11 +17,11 @@ let StateTransition;
 /**
  * A callback which accepts a `State` as an
  * argument and returns a `Boolean` instructing
- * whether or not to call `setState` again.
+ * whether or not to call `update` again.
  * 
- * @typedef {function(State)} TransitionCondition
+ * @typedef {function(State)} WhileCondition
  */
-let TransitionCondition;
+let WhileCondition;
 
 /**
  * 
@@ -61,8 +61,8 @@ class StateMachine {
      * A callback which accepts a `State` as an argument.
      * Inside the callback, `this` refers to this Widget.
      * 
-     * @param {TransitionCondition} transitionCondition
-     * A `StateTransition` callback which returns `true`
+     * @param {WhileCondition} whileCondition
+     * A `StateTransition`-like callback. Returns `true`
      * or `false`, indicating whether or not to call
      * `update` again.
      * 
