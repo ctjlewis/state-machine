@@ -72,14 +72,14 @@ class StateMachine {
      */
     transition(
         stateTransition,
-        transitionCondition,
+        whileCondition,
         maxCalls = Infinity
     ) {
 
         let i = 0;
         while (
-            transitionCondition
-            && transitionCondition(this.state)
+            whileCondition
+            && whileCondition(this.state)
             && i++ < maxCalls
         ) stateTransition(this.state);
 

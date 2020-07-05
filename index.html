@@ -2,5 +2,22 @@
 <html>
     <head>
         <script src="StateMachine.js"></script>
+        <script>
+
+            const clone = fn => new Function('return ' + fn.toString()).call();
+            function test() {
+                start = performance.now();
+                new StateMachine({ total: 0 })
+                    .transition(
+                        state => state.total++, 
+                        state => state.total < 1e6
+                );
+                console.log(performance.now() - start);
+            }
+
+            let test1 = clone(test),
+                test2 = clone(test);
+
+        </script>
     </head>
 </html>
