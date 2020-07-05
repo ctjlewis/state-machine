@@ -1,4 +1,9 @@
 /**
+ * @license MIT
+ * @fileoverview Source code for the StateMachine class.
+ */
+
+/**
  * A key-map Object containing all state
  * information.
  * 
@@ -24,15 +29,13 @@ let StateTransition;
 let WhileCondition;
 
 /**
- * 
- * @interface
+ * @abstract
  */
 class StateMachine {
 
     /**
-     * 
      * @param {State} initialState
-     * The initial `State``of the `StateMachine`.
+     * The initial `State``of this `StateMachine`.
      */
     constructor(initialState = {}) {
         /**
@@ -73,8 +76,7 @@ class StateMachine {
     transition(
         stateTransition,
         whileCondition,
-        maxCalls = Infinity
-    ) {
+        maxCalls = Infinity) {
 
         let i = 0;
         while (
