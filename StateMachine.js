@@ -19,7 +19,7 @@ let StateTransition;
  * argument and returns a `Boolean` instructing
  * whether or not to call `setState` again.
  * 
- * @typedef {StateTransition} TransitionCondition
+ * @typedef {function(State)} TransitionCondition
  */
 let TransitionCondition;
 
