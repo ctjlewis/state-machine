@@ -57,7 +57,7 @@ class StateMachine {
     }
 
     /**
-     * Update this machine's state by passing
+     * Update this machine's state by calling
      * `StateTransition` while `WhileCondition` is
      * `true`.
      *
