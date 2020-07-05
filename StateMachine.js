@@ -1,12 +1,13 @@
 /**
  * @license MIT
- * @fileoverview Source code for the StateMachine class.
+ * @fileoverview Source code for the StateMachine
+ * class.
  */
 
 /**
  * A key-map Object containing all state
  * information.
- * 
+ *
  * @typedef {Object} State
  */
 let State;
@@ -14,7 +15,7 @@ let State;
 /**
  * A callback which accepts a `State` as an
  * argument.
- * 
+ *
  * @typedef {function(State)} StateTransition
  */
 let StateTransition;
@@ -23,7 +24,7 @@ let StateTransition;
  * A callback which accepts a `State` as an
  * argument and returns a `Boolean` instructing
  * whether or not to call `update` again.
- * 
+ *
  * @typedef {function(State)} WhileCondition
  */
 let WhileCondition;
@@ -46,8 +47,8 @@ class StateMachine {
 
     /**
      * Load a state.
-     * 
-     * @param {State} state
+     *
+     * @param {State} state 
      * Value to load into `state`.
      */
     init(state) {
@@ -56,22 +57,23 @@ class StateMachine {
     }
 
     /**
-     * Update this machine's state with the
-     * `StateTransition` until `TransitionCondition`
-     * fails.
-     * 
-     * @param {StateTransition} stateTransition
-     * A callback which accepts a `State` as an argument.
-     * Inside the callback, `this` refers to this Widget.
-     * 
-     * @param {WhileCondition} whileCondition
-     * A `StateTransition`-like callback. Returns `true`
-     * or `false`, indicating whether or not to call
-     * `update` again.
-     * 
-     * @param {Number} maxCalls
-     * The maximum number of times to trigger a state
-     * update. Defaults to `Infinity`.
+     * Update this machine's state by passing
+     * `StateTransition` while `WhileCondition` is
+     * `true`.
+     *
+     * @param {StateTransition} stateTransition 
+     * A callback which accepts a `State` as an
+     * argument. Inside the callback, `this`
+     * refers to this Widget.
+     *
+     * @param {WhileCondition} whileCondition 
+     * A `StateTransition`-like callback. Returns
+     * `true` or `false`, indicating whether or
+     * not to call `update` again.
+     *
+     * @param {Number} maxCalls 
+     * The maximum number of times to trigger a
+     * state update. Defaults to `Infinity`.
      */
     transition(
         stateTransition,
@@ -91,11 +93,10 @@ class StateMachine {
     /**
      * Update this machine's state. Analogous to
      * `setState` in traditional nomenclature.
-     * 
+     *
      * @param {StateTransition} stateTransition
-     * A callback which accepts a `State` as an argument.
-     * Inside the callback, `this` refers to this 
-     * `StateMachine`.
+     * A callback which accepts a `State` as an
+     * argument.
      */
     update(stateTransition) {
         stateTransition(this.state);
