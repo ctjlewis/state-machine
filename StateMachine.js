@@ -51,7 +51,7 @@ class StateMachine {
      * @param {State} state 
      * Value to load into `state`.
      */
-    init(state) {
+    set(state) {
         this.state = state;
         return this;
     }
@@ -80,12 +80,26 @@ class StateMachine {
         whileCondition,
         maxCalls = Infinity) {
 
-        let i = 0;
-        while (
-            whileCondition
-            && whileCondition(this.state)
-            && i++ < maxCalls
-        ) stateTransition(this.state);
+        let i = 0,
+            state = this.state;
+
+        console.log(this.state);
+
+        if (
+            whileCondition &&
+            whileCondition(state) &&
+            i++ < maxCalls
+        ) {
+            stateTransition(state), 
+            this.render(),
+            requestAnimationFrame(
+                () => this.transition(
+                        stateTransition, 
+                        whileCondition, 
+                        maxCalls
+                    )
+            );
+        }
 
         return this;
     }
@@ -100,6 +114,14 @@ class StateMachine {
      */
     update(stateTransition) {
         stateTransition(this.state);
+        return this.render();
+    }
+
+    /**
+     * @override
+     */
+    render() {
+        document.body.textContent = this.state.total;
         return this;
     }
 }

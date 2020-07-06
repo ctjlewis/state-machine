@@ -2,22 +2,55 @@
 <html>
     <head>
         <script src="StateMachine.js"></script>
+    </head>
+    <body>
         <script>
 
-            const clone = fn => new Function('return ' + fn.toString()).call();
-            function test() {
-                start = performance.now();
-                new StateMachine({ total: 0 })
-                    .transition(
-                        state => state.total++, 
-                        state => state.total < 1e6
-                );
-                console.log(performance.now() - start);
+            const time = fn => {
+                let start = performance.now();
+                fn();
+                const time = performance.now() - start;
+                console.log(`took ${time.toFixed(2)}ms`);
             }
 
-            let test1 = clone(test),
-                test2 = clone(test);
+            const test = new StateMachine({ total: 0, direction: 1 });
+
+            function runTests() {
+
+                
+                // transition
+                time(() => test.transition(
+                    state => state.total++, 
+                    state => state.total < 1e6
+                ));
+
+                // reset total
+                test.set({ total: 0 });
+                
+                // transition again
+                time(() => test.transition(
+                    state => state.total++, 
+                    state => state.total < 1e6
+                ));
+
+                console.log(test.state);
+            }
+
+            time(() => test.transition(
+                state => {
+
+                    if (state.direction > 0)
+                        state.total++;
+
+                    else if (state.direction < 0)
+                        state.total--;
+
+                    if (state.total == 10 || state.total == 0)
+                        state.direction = -state.direction;
+                }, 
+                state => state.total < 1e6
+            ));
 
         </script>
-    </head>
+    </body>
 </html>
