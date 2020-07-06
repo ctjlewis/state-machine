@@ -45,7 +45,7 @@
                     else if (state.direction < 0)
                         state.total--;
 
-                    if (state.total == 10 || state.total == 0)
+                    if (state.total == 1000 || state.total == 0)
                         state.direction = -state.direction;
                 }, 
                 state => state.total < 1e6
