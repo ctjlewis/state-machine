@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "StateMachine.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Christian Lewis <hello@trytelework.com>",
+  "license": "MIT",
   "dependencies": {
+    "ava": "^3.11.1",
     "enable-browser-mode": "^1.31.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
