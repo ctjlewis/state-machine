@@ -11,7 +11,9 @@ test('1 -> 10', async (t) => {
   })
   
   await machine.transition(
+    // transition
     state => state.a++,
+    // while
     state => state.a < 10
   );
 
