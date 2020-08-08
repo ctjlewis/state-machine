@@ -1,6 +1,6 @@
 # StateMachine.js
 
-A simple state machine.
+A simple non-finite state machine.
 
 # Form
 See this example from the `tests/` directory:
